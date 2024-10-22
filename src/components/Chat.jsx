@@ -44,6 +44,7 @@ export const Chat = ({ room  }) => {
       createdAt: serverTimestamp(),
       user: auth.currentUser.photoURL,
       room,
+      
     });
 
     setNewMessage("");
@@ -58,10 +59,12 @@ export const Chat = ({ room  }) => {
         {messages.map((message) => (
           <div key={message.id} className="message">
             <span className="user">{message.text} </span> 
+            
             <img src={message.user} alt="" />
           </div>
         ))}
       </div>
+     
       <form onSubmit={handleSubmit} className="new-message-form">
         <input
           type="text"
