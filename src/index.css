@@ -15,6 +15,11 @@ body {
   height: 100vh;
 }
 
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -27,22 +32,27 @@ body {
   max-height: 800px;
   overflow: hidden;
 }
+
+.App.dark-mode {
+  background-color: #1e1e1e;
+}
+
 .imageGif { 
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 10%;
-
 }
+
 p { 
   font-size: 19px;
 }
+
 h1 { 
   font-size: 2rem;
   font-weight: bold;
   font-family: 'Roboto', sans-serif;
 }
-
 
 /* Header */
 .app-header {
@@ -57,11 +67,14 @@ h1 {
 
 .app-container {
   display: flex;
-  
   flex-direction: column;
   flex-grow: 1;
   padding: 20px;
   overflow-y: auto;
+}
+
+.app-container.dark-mode {
+  background-color: #1e1e1e;
 }
 
 .sign-out {
@@ -69,6 +82,11 @@ h1 {
   padding: 10px;
   text-align: center;
   border-top: 1px solid #e6e6e6;
+}
+
+.sign-out.dark-mode {
+  background-color: #1e1e1e;
+  border-top: 1px solid #444444;
 }
 
 .sign-out button {
@@ -86,6 +104,10 @@ h1 {
   background-color: #006bbf; /* Darker hover blue */
 }
 
+.sign-out button.dark-mode {
+  background-color: #555555;
+}
+
 /* Room Entry */
 .room {
   display: flex;
@@ -93,6 +115,14 @@ h1 {
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+
+.room.dark-mode {
+  background-color: #1e1e1e;
+}
+
+.room label {
+  margin-bottom: 10px;
 }
 
 .room input {
@@ -112,6 +142,12 @@ h1 {
   border-color: #0084ff;
 }
 
+.room input.dark-mode {
+  background-color: #333333;
+  color: #ffffff;
+  border: 1px solid #444444;
+}
+
 .room button {
   background-color: #0084ff;
   color: #ffffff;
@@ -127,11 +163,19 @@ h1 {
   background-color: #006bbf;
 }
 
+.room button.dark-mode {
+  background-color: #555555;
+}
+
 /* Chat Styles */
 .chat-app {
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+
+.chat-app.dark-mode {
+  background-color: #1e1e1e;
 }
 
 .header {
@@ -143,10 +187,18 @@ h1 {
   font-weight: bold;
 }
 
+.header.dark-mode {
+  background-color: #333333;
+}
+
 .messages {
   flex-grow: 1;
   overflow-y: auto;
   padding: 10px;
+}
+
+.messages.dark-mode {
+  background-color: #2e2e2e;
 }
 
 .message {
@@ -160,10 +212,19 @@ h1 {
   color: #000000; /* Black text */
 }
 
+.message.dark-mode {
+  background-color: #333333;
+  color: #ffffff;
+}
+
 .message .user {
   font-weight: bold;
   margin-right: 10px;
   color: #0084ff;
+}
+
+.message .user.dark-mode {
+  color: #80bfff;
 }
 
 .message img {
@@ -178,7 +239,11 @@ h1 {
   padding: 10px;
   background-color: #ffffff;
   border-top: 1px solid #e6e6e6;
-  
+}
+
+.new-message-form.dark-mode {
+  background-color: #333333;
+  border-top: 1px solid #444444;
 }
 
 .new-message-input {
@@ -194,6 +259,12 @@ h1 {
 .new-message-input:focus {
   outline: none;
   border-color: #0084ff;
+}
+
+.new-message-input.dark-mode {
+  background-color: #444444;
+  color: #ffffff;
+  border: 1px solid #555555;
 }
 
 .send-button {
@@ -212,6 +283,10 @@ h1 {
   background-color: #006bbf;
 }
 
+.send-button.dark-mode {
+  background-color: #555555;
+}
+
 /* Auth Styles */
 .auth {
   display: flex;
@@ -220,6 +295,10 @@ h1 {
   align-items: center;
   height: 100%;
   text-align: center;
+}
+
+.auth.dark-mode {
+  background-color: #1e1e1e;
 }
 
 .auth p {
@@ -242,6 +321,10 @@ h1 {
   background-color: #006bbf;
 }
 
+.auth button.dark-mode {
+  background-color: #555555;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .App {
@@ -257,56 +340,4 @@ h1 {
   .new-message-form {
     padding: 5px;
   }
-}
-
-
-
-
-body.dark-mode {
-  background-color: #121212;
-  color: #ffffff;
-}
-
-/* AppWrapper styles */
-
-
-.app-wrapper.dark-mode {
-  background-color: #1e1e1e;
-}
-
-
-
-.room.dark-mode {
-  background-color: #1e1e1e;
-}
-
-.room label {
-  margin-bottom: 10px;
-}
-
-.room input {
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #e0e0e0;
-  border-radius: 5px;
-  width: 100%;
-  max-width: 300px;
-}
-
-.room input.dark-mode {
-  background-color: #333333;
-  color: #ffffff;
-  border: 1px solid #444444;
-}
-
-
-
-.room button.dark-mode {
-  background-color: #555555;
-}
-
-
-.fixed-footer.dark-mode {
-  background-color: #333333;
-  border-top: 1px solid #444444;
 }

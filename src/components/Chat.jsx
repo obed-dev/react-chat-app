@@ -42,13 +42,13 @@ export const Chat = ({ room }) => {
         <div className={`messages ${isDarkMode ? 'dark-mode' : ''}`}>
           {messages.map((message) => (
             <div key={message.id} className={`message ${isDarkMode ? 'dark-mode' : ''}`}>
-              <span className="user">{message.text} </span>
+              <span className={`user ${isDarkMode ? 'dark-mode' : ''}`}>{message.text} </span>
               <img src={message.user} alt="" />
             </div>
           ))}
         </div>
       </div>
-   
+ 
     </>
   );
 };

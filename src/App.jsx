@@ -3,7 +3,6 @@ import { Chat } from "./components/Chat.jsx";
 import { Auth } from "./components/Auth.jsx";
 import { AppWrapper } from "./components/AppWrapper.jsx";
 import Cookies from "universal-cookie";
-import "./index.css";
 import { SendMessage } from "./components/SendMessage.jsx";
 import { db } from "./firebase/config";
 import { collection } from "firebase/firestore";
@@ -22,6 +21,7 @@ const ThemeToggleButton = () => {
 };
 
 function App() {
+  const { isDarkMode } = useTheme();
   const [isAuth, setIsAuth] = useState(cookies.get("auth-token"));
   const [isInChat, setIsInChat] = useState(false);
   const [room, setRoom] = useState("");
@@ -45,8 +45,8 @@ function App() {
       <ThemeToggleButton />
       <AppWrapper isAuth={isAuth} setIsAuth={setIsAuth} setIsInChat={setIsInChat}>
         {!isInChat ? (
-          <div className="room">
-            <label> Type room name: </label>
+         <div className={`room ${isDarkMode ? 'dark-mode' : ''}`}>
+          <label className={`room-label ${isDarkMode ? 'dark-mode' : ''}`}> Type room name: </label>
             <input onChange={(e) => setRoom(e.target.value)} />
             <button
               onClick={() => {
@@ -64,7 +64,9 @@ function App() {
             </div>
           </>
         )}
+       
       </AppWrapper>
+     
     </>
   );
 }
