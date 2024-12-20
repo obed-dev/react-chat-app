@@ -1,20 +1,37 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState } from "react";
 import { Chat } from "./components/Chat.jsx";
 import { Auth } from "./components/Auth.jsx";
 import { AppWrapper } from "./components/AppWrapper.jsx";
 import Cookies from "universal-cookie";
-import "./App.css";
+import "./index.css";
+import { SendMessage } from "./components/SendMessage.jsx";
+import { db } from "./firebase/config";
+import { collection } from "firebase/firestore";
+import { ThemeProvider, useTheme } from "./components/ThemeContext.jsx";
 
 const cookies = new Cookies();
 
+const ThemeToggleButton = () => {
+  const { toggleDarkMode, isDarkMode } = useTheme();
+
+  return (
+    <button className="theme-toggle" onClick={toggleDarkMode}>
+      {isDarkMode ? "Light Mode" : "Dark Mode"}
+    </button>
+  );
+};
+
+
 function App() {
   const [isAuth, setIsAuth] = useState(cookies.get("auth-token"));
-  const [isInChat, setIsInChat] = useState(null);
+  const [isInChat, setIsInChat] = useState(false);
   const [room, setRoom] = useState("");
+
+  const messagesRef = collection(db, "messages");
 
   if (!isAuth) {
     return (
+        <ThemeProvider>
       <AppWrapper
         isAuth={isAuth}
         setIsAuth={setIsAuth}
@@ -22,10 +39,13 @@ function App() {
       >
         <Auth setIsAuth={setIsAuth} />
       </AppWrapper>
+      </ThemeProvider>
     );
   }
 
   return (
+    <ThemeProvider>
+      <ThemeToggleButton />
     <AppWrapper isAuth={isAuth} setIsAuth={setIsAuth} setIsInChat={setIsInChat}>
       {!isInChat ? (
         <div className="room">
@@ -40,12 +60,17 @@ function App() {
           </button>
         </div>
       ) : (
-    
-
+        <>
           <Chat room={room} />
 
+          {/* Formulario Siempre Visible */}
+          <div className="fixed-footer">
+            <SendMessage room={room} messagesRef={messagesRef} />
+          </div>
+        </>
       )}
     </AppWrapper>
+    </ThemeProvider>
   );
 }
 

@@ -1,0 +1,140 @@
+/* General styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+  
+  body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  /* AppWrapper styles */
+  .app-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .app-wrapper.dark-mode {
+    background-color: #1e1e1e;
+  }
+  
+  /* Chat styles */
+  .chat {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .chat-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #075e54;
+    color: #ffffff;
+  }
+  
+  .chat-header.dark-mode {
+    background-color: #333333;
+  }
+  
+  .chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #e5ddd5;
+  }
+  
+  .chat-messages.dark-mode {
+    background-color: #2e2e2e;
+  }
+  
+  .chat-input {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #ffffff;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  .chat-input.dark-mode {
+    background-color: #333333;
+    border-top: 1px solid #444444;
+  }
+  
+  .chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+    margin-right: 10px;
+  }
+  
+  .chat-input input.dark-mode {
+    background-color: #444444;
+    color: #ffffff;
+  }
+  
+  .chat-input button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #075e54;
+    color: #ffffff;
+    cursor: pointer;
+  }
+  
+  .chat-input button.dark-mode {
+    background-color: #555555;
+  }
+  
+  /* Auth styles */
+  .auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 20px;
+    background-color: #ffffff;
+  }
+  
+  .auth.dark-mode {
+    background-color: #1e1e1e;
+  }
+  
+  .auth input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .auth input.dark-mode {
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #444444;
+  }
+  
+  .auth button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #075e54;
+    color: #ffffff;
+    cursor: pointer;
+  }
+  
+  .auth button.dark-mode {
+    background-color: #555555;
+  }

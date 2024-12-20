@@ -57,6 +57,7 @@ h1 {
 
 .app-container {
   display: flex;
+  
   flex-direction: column;
   flex-grow: 1;
   padding: 20px;
@@ -177,6 +178,7 @@ h1 {
   padding: 10px;
   background-color: #ffffff;
   border-top: 1px solid #e6e6e6;
+  
 }
 
 .new-message-input {
