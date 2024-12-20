@@ -14,6 +14,7 @@ import { useTheme } from "./ThemeContext";
 export const Chat = ({ room }) => {
   const [messages, setMessages] = useState([]);
   const messagesRef = collection(db, "messages");
+  const { isDarkMode } = useTheme();
 
   useEffect(() => {
     const queryMessages = query(
@@ -34,22 +35,20 @@ export const Chat = ({ room }) => {
 
   return (
     <>
-      <div className="chat-app">
-        <div className="header">
+      <div className={`chat-app ${isDarkMode ? 'dark-mode' : ''}`}>
+        <div className={`header ${isDarkMode ? 'dark-mode' : ''}`}>
           <h1>Welcome to: {room.toUpperCase()} </h1>
         </div>
-        <div className="messages">
+        <div className={`messages ${isDarkMode ? 'dark-mode' : ''}`}>
           {messages.map((message) => (
-            <div key={message.id} className="message">
+            <div key={message.id} className={`message ${isDarkMode ? 'dark-mode' : ''}`}>
               <span className="user">{message.text} </span>
               <img src={message.user} alt="" />
             </div>
           ))}
         </div>
       </div>
-     
-      </>
-      
-    
+   
+    </>
   );
 };

@@ -3,9 +3,9 @@ import { addDoc, serverTimestamp } from "firebase/firestore";
 import { auth } from "../firebase/config";
 import { useTheme } from "./ThemeContext";
 
-
 export const SendMessage = ({ room, messagesRef }) => {
   const [newMessage, setNewMessage] = useState("");
+  const { isDarkMode } = useTheme();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -27,15 +27,15 @@ export const SendMessage = ({ room, messagesRef }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="new-message-form">
+    <form onSubmit={handleSubmit} className={`new-message-form ${isDarkMode ? 'dark-mode' : ''}`}>
       <input
         type="text"
         value={newMessage}
         onChange={(event) => setNewMessage(event.target.value)}
-        className="new-message-input"
+        className={`new-message-input ${isDarkMode ? 'dark-mode' : ''}`}
         placeholder="Type your message here..."
       />
-      <button type="submit" className="send-button" disabled={!newMessage.trim()}>
+      <button type="submit" className={`send-button ${isDarkMode ? 'dark-mode' : ''}`} disabled={!newMessage.trim()}>
         Send
       </button>
     </form>

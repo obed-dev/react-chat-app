@@ -260,3 +260,53 @@ h1 {
 }
 
 
+
+
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* AppWrapper styles */
+
+
+.app-wrapper.dark-mode {
+  background-color: #1e1e1e;
+}
+
+
+
+.room.dark-mode {
+  background-color: #1e1e1e;
+}
+
+.room label {
+  margin-bottom: 10px;
+}
+
+.room input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.room input.dark-mode {
+  background-color: #333333;
+  color: #ffffff;
+  border: 1px solid #444444;
+}
+
+
+
+.room button.dark-mode {
+  background-color: #555555;
+}
+
+
+.fixed-footer.dark-mode {
+  background-color: #333333;
+  border-top: 1px solid #444444;
+}

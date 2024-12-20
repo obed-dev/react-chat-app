@@ -7,7 +7,7 @@ import "./index.css";
 import { SendMessage } from "./components/SendMessage.jsx";
 import { db } from "./firebase/config";
 import { collection } from "firebase/firestore";
-import { ThemeProvider, useTheme } from "./components/ThemeContext.jsx";
+import { useTheme } from "./components/ThemeContext.jsx";
 
 const cookies = new Cookies();
 
@@ -21,7 +21,6 @@ const ThemeToggleButton = () => {
   );
 };
 
-
 function App() {
   const [isAuth, setIsAuth] = useState(cookies.get("auth-token"));
   const [isInChat, setIsInChat] = useState(false);
@@ -31,7 +30,6 @@ function App() {
 
   if (!isAuth) {
     return (
-        <ThemeProvider>
       <AppWrapper
         isAuth={isAuth}
         setIsAuth={setIsAuth}
@@ -39,38 +37,35 @@ function App() {
       >
         <Auth setIsAuth={setIsAuth} />
       </AppWrapper>
-      </ThemeProvider>
     );
   }
 
   return (
-    <ThemeProvider>
+    <>
       <ThemeToggleButton />
-    <AppWrapper isAuth={isAuth} setIsAuth={setIsAuth} setIsInChat={setIsInChat}>
-      {!isInChat ? (
-        <div className="room">
-          <label> Type room name: </label>
-          <input onChange={(e) => setRoom(e.target.value)} />
-          <button
-            onClick={() => {
-              setIsInChat(true);
-            }}
-          >
-            Enter Chat
-          </button>
-        </div>
-      ) : (
-        <>
-          <Chat room={room} />
-
-          {/* Formulario Siempre Visible */}
-          <div className="fixed-footer">
-            <SendMessage room={room} messagesRef={messagesRef} />
+      <AppWrapper isAuth={isAuth} setIsAuth={setIsAuth} setIsInChat={setIsInChat}>
+        {!isInChat ? (
+          <div className="room">
+            <label> Type room name: </label>
+            <input onChange={(e) => setRoom(e.target.value)} />
+            <button
+              onClick={() => {
+                setIsInChat(true);
+              }}
+            >
+              Enter Chat
+            </button>
           </div>
-        </>
-      )}
-    </AppWrapper>
-    </ThemeProvider>
+        ) : (
+          <>
+            <Chat room={room} />
+            <div className="fixed-footer">
+              <SendMessage room={room} messagesRef={messagesRef} />
+            </div>
+          </>
+        )}
+      </AppWrapper>
+    </>
   );
 }
 
